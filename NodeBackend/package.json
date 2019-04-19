@@ -1,0 +1,31 @@
+{
+  "name": "bw2019q3-mongo-node-bookmarks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "cross-var node $npm_package_main",
+    "env": "env | grep 'npm_'"
+  },
+  "author": "Glenn R. Martin <glenn.r.martin@accenture.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.1",
+    "@types/express-graphql": "^0.6.2",
+    "@types/graphql": "^14.2.0",
+    "@types/lodash": "^4.14.123",
+    "@types/mongodb": "^3.1.23",
+    "body-parser": "^1.18.3",
+    "cross-var": "^1.1.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.2.1",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.2.3",
+    "typescript": "^3.4.3",
+    "ulid": "^2.3.0"
+  }
+}

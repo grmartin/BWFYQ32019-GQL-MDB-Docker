@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "e24159aa-13d1-4df9-9d95-65187cc09dbb",
+		"name": "Mongo Node REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "*Debug",
+			"item": [
+				{
+					"name": "Test DB Connection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/rest/*{{DEBUG_KEY}}/test_connection",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"*{{DEBUG_KEY}}",
+								"test_connection"
+							]
+						},
+						"description": "2"
+					},
+					"response": []
+				},
+				{
+					"name": "Ping/Pong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/rest/*{{DEBUG_KEY}}/ping",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"*{{DEBUG_KEY}}",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookmarks",
+			"item": [
+				{
+					"name": "Post Bookmark(s)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Yahoo!\",\n    \"url\": \"http://www.yahoo.com\",\n    \"tags\": [\n        \"search-engine\",\n        \"us-based\"\n    ]\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/rest/bookmarks",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"bookmarks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookmarks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/rest/bookmarks",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"bookmarks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "373f43bb-1c39-42f9-b114-e6458f812c12",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d1ea9370-ebd2-44f3-b2ed-dd8efd910285",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

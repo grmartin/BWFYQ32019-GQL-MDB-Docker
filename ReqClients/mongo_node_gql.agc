@@ -1,0 +1,1 @@
+{"version":1,"type":"collection","title":"Mongo Node GQL","queries":[{"version":1,"type":"window","query":"{ hello }","apiUrl":"http://localhost:3000/gql/","variables":"{}","subscriptionUrl":"","headers":[{"key":"","value":""}],"windowName":"Hello World"}],"created_at":1555728941107,"updated_at":1555728941107,"id":2}

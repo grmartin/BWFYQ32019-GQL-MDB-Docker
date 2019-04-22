@@ -2,7 +2,7 @@ import {NextFunction, Response} from "express";
 import {StorageAwareRequest} from "../../middleware/storage";
 import {spreadable} from "../../utility/stuffjsshouldhave";
 
-const collectionName = 'bookmark';
+export const collectionName = 'bookmark';
 
 export default class BookmarksController {
     public static async getBookmarks(req: StorageAwareRequest, res: Response, next: NextFunction) {

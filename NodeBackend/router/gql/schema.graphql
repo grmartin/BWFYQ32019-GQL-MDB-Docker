@@ -1,12 +1,15 @@
 type Query {
     hello: String,
     bookmarks: [Bookmark]
+    tags: [Tag]
 }
+
+scalar Tag
 
 type Bookmark {
     title: String!,
     url: String!,
     notes: String,
-    tags: [String],
+    tags: [Tag],
     image: String
 }

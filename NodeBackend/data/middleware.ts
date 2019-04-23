@@ -3,6 +3,7 @@ import {Request, Response, NextFunction, RequestHandler} from 'express';
 import * as _ from 'lodash';
 import {spreadPair} from "../utility/predicatehelpers";
 import {toIndexSymbol} from "../utility/stufftsshouldhave";
+import {DataManager} from "./dataManager";
 
 /*
  * This file provides two methodologies for accessing the MongoDB instance, a modified Request instance with a property
@@ -11,11 +12,11 @@ import {toIndexSymbol} from "../utility/stufftsshouldhave";
  *
  * Basically this breaks down to:
  *  super nice access for REST apis: `StorageAwareRequest.mongoDatabase`
- *  a utility getter for GQL: `Storage.getMongoDatabase(req)`
+ *  a utility getter for GQL: `Middleware.getMongoDatabase(req)`
  */
 
 export interface StorageAwareRequest extends Request {
-    mongoDatabase: mongodb.Db;
+    dataManager: DataManager;
 }
 
 const FILE_ULID = '01D8VHT5T6TKR72NXNVBVN139C';
@@ -60,20 +61,16 @@ const collections = {
     }
 };
 
-export class Storage {
+export class Middleware {
     public static wrap(fn: expressFn): RequestHandler {
         return function _storage_wrap(req: Request, res: Response, next: NextFunction) {
-            Object.defineProperty(req, 'mongoDatabase', {
+            Object.defineProperty(req, 'dataManager', {
                 enumerable: false,
                 get: () => req[DATABASE_KEY]
             });
 
             fn(<StorageAwareRequest>req, res, next);
         }
-    }
-
-    public static getMongoDatabase(req: Request): mongodb.Db {
-        return req[DATABASE_KEY];
     }
 
     public static connect(database: string, url: string = DB_URL): RequestHandler  {
@@ -90,7 +87,7 @@ export class Storage {
                 function setAndNext() {
                     req.app.set(DB_SETUP_CHECK_RUN, true);
 
-                    req[DATABASE_KEY] = db;
+                    req[DATABASE_KEY] = new DataManager(db);
 
                     res.on("close", () => {client.close().then()});
 
@@ -102,7 +99,7 @@ export class Storage {
                     db.listCollections(undefined, {nameOnly: true})
                         .toArray()
                         .then((collObjs) => collObjs.map((x) => x.name))
-                        .then(Storage.initializeCollections(db))
+                        .then(Middleware.initializeCollections(db))
                         .then(setAndNext);
                 } else {
                     setAndNext();

@@ -1,11 +1,11 @@
 import * as core from 'express-serve-static-core';
 import {Router} from 'express';
-import {Storage} from '../middleware/storage';
+import {Middleware} from '../data/middleware';
 import * as controller from './gql/middleware';
 import * as graphqlHTTP from 'express-graphql';
 import {initializeGQL} from "./gql/middleware";
 
-const dbWrap = Storage.wrap;
+const dbWrap = Middleware.wrap;
 const router = Router();
 router.use(initializeGQL);
 

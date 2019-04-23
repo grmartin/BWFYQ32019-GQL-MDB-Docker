@@ -1,3 +1,8 @@
+
+export type BasicObject = Map<any>;
+
+export type Map<T> = { [index:string] : T };
+
 /**
  * Utilize TypeErasure to imply a Symbol can be a String to allow for use in object indexers.
  *

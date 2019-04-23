@@ -1,9 +1,9 @@
 import * as core from 'express-serve-static-core';
 import {Router} from 'express';
-import {Storage} from '../middleware/storage';
+import {Middleware} from '../data/middleware';
 import controller from './controller/bookmarks';
 
-const dbWrap = Storage.wrap;
+const dbWrap = Middleware.wrap;
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import {Storage} from "./middleware/storage";
+import {Middleware as DataStorageMiddleware} from "./data/middleware";
 import {NextFunction, Request, Response} from "express-serve-static-core";
 import {default as bindDebugRouter} from './router/debug_utility';
 import {default as bindRestBookmarksRouter} from './router/bookmarks';
@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.NBE_PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(Storage.connect('bookmarks'));
+app.use(DataStorageMiddleware.connect('bookmarks'));
 
 function listen() {
     app.use(function _errorHandler(err: any, req: Request, res: Response, next: NextFunction) {

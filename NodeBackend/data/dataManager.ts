@@ -1,6 +1,7 @@
 import {Db} from "mongodb";
 import * as _ from "lodash";
 import {BasicObject} from "../utility/stufftsshouldhave";
+import {spreadable} from "../utility/stuffjsshouldhave";
 
 const bookmarkCollectionName = 'bookmark';
 
@@ -17,6 +18,14 @@ export class DataManager {
 
     public async getBookmarks(): Promise<BasicObject[]> {
         return await this.db.collection(bookmarkCollectionName).find().toArray()
+    }
+
+    public async addBookmarks(bookmarks: BasicObject | BasicObject[]): Promise<BasicObject | BasicObject[]> {
+        const posts = spreadable(bookmarks);
+
+        await this.db.collection(bookmarkCollectionName).insertMany([...posts])
+
+        return bookmarks;
     }
 
     public async getTags(): Promise<string[]> {

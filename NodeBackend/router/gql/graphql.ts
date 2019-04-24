@@ -10,15 +10,8 @@ const queries = {
 
 // noinspection JSUnusedGlobalSymbols
 const mutations = {
-    createBookmark: async (args:Map<any>, contextValue:StorageAwareRequest, info) => {
-        const posts = [args];
-
-        const collection = contextValue.dataManager.db.collection('bookmark');
-
-        await collection.insertMany(posts);
-
-        return args;
-    }
+    createBookmark: async (args:Map<any>, contextValue:StorageAwareRequest, info) =>
+        contextValue.dataManager.addBookmarks(args)
 };
 
 export const root = {...queries, ...mutations};

@@ -52,10 +52,28 @@
       "variables": "{}",
       "version": 1,
       "windowName": "Tags"
+    },
+    {
+      "apiUrl": "http://localhost:3000/gql/",
+      "created_at": 1556113881496,
+      "headers": [
+        {
+          "key": "",
+          "value": ""
+        }
+      ],
+      "id": "7c599348-9d63-4fd9-9602-704e818e68e8",
+      "query": "mutation {\n  createBookmark(title:  \"Star Trek\", url:\"http://www.startrek.com\") {\n    title, url, tags\n  }\n}",
+      "subscriptionUrl": "",
+      "type": "window",
+      "updated_at": 1556113881496,
+      "variables": "{}",
+      "version": 1,
+      "windowName": "Mutation : Add Bookmark"
     }
   ],
   "title": "Mongo Node GQL",
   "type": "collection",
-  "updated_at": 1556036328634,
+  "updated_at": 1556113881496,
   "version": 1
 }

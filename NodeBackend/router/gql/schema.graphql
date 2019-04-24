@@ -1,5 +1,9 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
 type Query {
-    hello: String,
     bookmarks: [Bookmark]
     tags: [Tag]
 }
@@ -12,4 +16,8 @@ type Bookmark {
     notes: String,
     tags: [Tag],
     image: String
+}
+
+type Mutation {
+    createBookmark(title: String!, url: String!, tags: [Tag], notes: String, image: String):  Bookmark
 }

@@ -1,0 +1,21 @@
+FROM node:12.0.0-alpine
+
+# The shell used by Alpine is BusyBox.
+
+COPY ./Docker/pushpop.sh /tmp/shell/
+COPY ./Mongo/DockerSide/tmp/some-bookmarks.json /tmp/
+COPY ./NodeBackend /tmp/code-base/
+
+RUN source /tmp/shell/pushpop.sh                                                                                    &&\
+ mkdir -p /var/node-root/                                                                                           &&\
+ cp -rvv /tmp/code-base/* /var/node-root                                                                            &&\
+ pushd /var/node-root                                                                                               &&\
+ ls                                                                                                                 &&\
+ npm ci                                                                                                             &&\
+ npm run build                                                                                                      &&\
+ # node initializer.js /tmp/some-bookmarks.json                                                                     &&\
+ # rm -rf initializer.*                                                                                             &&\
+ ./node_modules/.bin/ulid > .install_id                                                                             &&\
+ env > .build_env
+
+CMD PWD=/var/node-root DEBUG=express:* npm start

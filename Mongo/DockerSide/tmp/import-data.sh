@@ -1,9 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-mongoimport \
+mongorestore \
  --host localhost \
- --db bookmarks \
- --collection bookmark \
- --type json \
- --file /tmp/some-bookmarks.json \
- --jsonArray
+ --archive=/tmp/mdb/bookmarks.mongo_dump_archive

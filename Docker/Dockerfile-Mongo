@@ -1,1 +1,9 @@
 FROM mongo:4.0.9-xenial
+
+COPY ./Mongo/DockerSide/tmp/* /tmp/mdb/
+
+RUN cd /tmp/mdb/ &&\
+ mongod --fork --syslog &&\
+ sleep 1 &&\
+ sh ./import-data.sh &&\
+ mongod --shutdown

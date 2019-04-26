@@ -6,12 +6,9 @@ services:
       dockerfile: Docker/Dockerfile-NodeBackend
     ports:
     - "3000:3000"
-    - "22:3001"
     links:
     - mongo
   mongo:
     build:
       context: ./
       dockerfile: Docker/Dockerfile-Mongo
-    ports:
-    - "22:3002"

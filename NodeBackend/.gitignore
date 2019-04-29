@@ -203,6 +203,3 @@ tags
 # Persistent undo
 [._]*.un~
 
-**/.idea
-*.js.map
-*.js

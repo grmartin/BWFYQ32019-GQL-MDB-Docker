@@ -1,0 +1,15 @@
+FROM mongo:4.0.9-xenial
+
+# Mongo's Image uses an init/entrypoint pattern... DB will be created only upon first startup. The monodb image also
+# creates it own volume... We don't have to.
+# https://hub.docker.com/_/mongo#initializing-a-fresh-instance
+
+
+COPY ./Mongo/DockerSide/tmp/*.sh /docker-entrypoint-initdb.d/
+COPY ./Mongo/DockerSide/tmp/*.mongo_dump_archive /tmp/mdb/
+
+RUN chmod 755 /docker-entrypoint-initdb.d/*.sh
+
+# DEBUGGING
+#RUN ls -al /docker-entrypoint-initdb.d/ &&\
+# ls -al /tmp/mdb

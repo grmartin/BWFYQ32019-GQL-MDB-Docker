@@ -1,0 +1,29 @@
+version: '3'
+services:
+  express-service:
+    build:
+      context: ./
+      dockerfile: Docker/Dockerfile-NodeBackend
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    networks:
+      shared_backend:
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      - NBE_DB_URL='mongodb://mongo:27017'
+  mongo:
+    build:
+      context: ./
+      dockerfile: Docker/Dockerfile-Mongo
+    environment:
+      - MONGO_INITDB_DATABASE=bookmarks
+    networks:
+      shared_backend:
+    restart: always
+
+networks:
+  shared_backend:

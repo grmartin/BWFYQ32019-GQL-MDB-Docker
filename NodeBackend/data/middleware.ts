@@ -22,7 +22,7 @@ export interface StorageAwareRequest extends Request {
 const FILE_ULID = '01D8VHT5T6TKR72NXNVBVN139C';
 const DATABASE_KEY = toIndexSymbol(Symbol(`${FILE_ULID}:db`));
 const DB_SETUP_CHECK_RUN = `${FILE_ULID}:DB_SETUP_CHECK_RUN`;
-const DB_URL = process.env.NBE_PORT || 'mongodb://localhost:27017';
+const DB_URL = process.env.NBE_DB_URL || 'mongodb://localhost:27017';
 
 type expressFn = (req: StorageAwareRequest, res: Response, next: NextFunction)=>void;
 

@@ -68,6 +68,33 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Introspect RTE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/rest/*{{DEBUG_KEY}}/rti",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"rest",
+								"*{{DEBUG_KEY}}",
+								"rti"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

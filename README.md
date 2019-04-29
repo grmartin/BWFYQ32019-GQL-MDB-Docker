@@ -7,7 +7,7 @@ This project is intended to be a playground for Docker/Docker-Compose, however i
     - REST API (`./NodeBackend/router/`, `./NodeBackend/router/controller`)
     - GraphQL API (`./NodeBackend/router/`, `./NodeBackend/router/gql`)
 - Support Scripts (`*.sh`)
-- Docker Compose Files **NYI**
+- Docker Compose Files/Various docker Support Files (`./docker-compose.yml`, `./Docker`)
 
 There are also API Testing Client files for [Postman (REST + Debugging)](https://www.getpostman.com/) and [Altair (GraphQL)](https://altair.sirmuel.design/).
 
